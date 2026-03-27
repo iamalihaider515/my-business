@@ -19,16 +19,18 @@ app.use("/uploads", express.static("uploads"));
 app.use("/api/auth", authRoutes);
 app.use("/api/posts", postRoutes);
 
-// DB Connection
+// PORT (Render uses this)
+const PORT = process.env.PORT || 5000;
+
+// DB Connection + Start Server
 mongoose.connect(process.env.MONGO_URI)
 .then(() => {
     console.log("MongoDB Connected");
-    app.listen(5000, () => console.log("Server running on port 5000"));
-    const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
-
+    app.listen(PORT, () => {
+        console.log(`Server running on port ${PORT}`);
+    });
 })
-.catch(err => console.log(err));
+.catch(err => {
+    console.log("DB Error:", err);
+});
