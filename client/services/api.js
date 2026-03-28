@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000/api";
+const BASE_URL = "https://my-business-1.onrender.com";
 
 // GET POSTS
 export const getPosts = async () => {
