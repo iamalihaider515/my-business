@@ -11,7 +11,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: "*"
+  origin: "https://my-business-gray.vercel.app/"
 }));
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
